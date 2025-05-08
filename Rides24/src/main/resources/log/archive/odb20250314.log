@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-03-14 19:42:28 #1 store] 
+Database 'C:\Users\1153342\Downloads\PrimeraIteración_QUIERODEJARDEHACERESTASMIERDASMATADME\Rides24\src\main\resources\rides.temp' is opened by 28208@Anne
+
+[2025-03-14 19:42:28 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-03-14 19:42:28 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-03-14 19:42:28 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-03-14 19:42:28 #5 type] 
+Type domain.Reservation is not enhanced.
+

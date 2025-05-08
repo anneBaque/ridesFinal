@@ -1,0 +1,402 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:10:00 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 51736@Anne
+
+[2025-05-05 12:10:00 #2 type.registry] 
+New type domain.Driver
+
+[2025-05-05 12:10:00 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:10:00 #4 type.registry] 
+New type domain.Ride
+
+[2025-05-05 12:10:00 #5 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:10:00 #6 type.registry] 
+New type domain.Passenger
+
+[2025-05-05 12:10:00 #7 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:10:00 #8 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2025-05-05 12:10:00 #9 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2025-05-05 12:10:00 #10 type.registry] 
+New type java.util.Vector<domain.Passenger>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:10:44 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 1-7)
+
+[2025-05-05 12:10:44 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 62016@Anne
+
+[2025-05-05 12:10:44 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:10:44 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:10:44 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:14:58 #6 type.registry] 
+New type domain.Mail
+
+[2025-05-05 12:14:58 #7 type] 
+Type domain.Mail is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:15:17 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 8-10)
+
+[2025-05-05 12:15:17 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 23192@Anne
+
+[2025-05-05 12:15:17 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:15:17 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:15:17 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:15:17 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:15:32 #7 type.registry] 
+New type domain.Reservation
+
+[2025-05-05 12:15:32 #8 type] 
+Type domain.Reservation is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:18:47 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 11-13)
+
+[2025-05-05 12:18:47 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 12908@Anne
+
+[2025-05-05 12:18:47 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:18:47 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:18:47 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:18:47 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:18:47 #7 type] 
+Type domain.Reservation is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:19:47 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 14-14)
+
+[2025-05-05 12:19:47 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 63324@Anne
+
+[2025-05-05 12:19:47 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:19:47 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:19:47 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:19:47 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:19:47 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:19:59 #8 type.registry] 
+New type domain.Rating
+
+[2025-05-05 12:19:59 #9 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:20:05 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 15-16)
+
+[2025-05-05 12:20:05 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 55904@Anne
+
+[2025-05-05 12:20:05 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:20:05 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:20:05 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:20:05 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:20:05 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:20:05 #8 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:20:28 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 17-17)
+
+[2025-05-05 12:20:28 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 25008@Anne
+
+[2025-05-05 12:20:28 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:20:28 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:20:28 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:20:28 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:20:28 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:20:28 #8 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:22:00 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 51228@Anne
+
+[2025-05-05 12:22:01 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:22:01 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:22:01 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:22:01 #5 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:22:01 #6 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:22:01 #7 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:22:27 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 61288@Anne
+
+[2025-05-05 12:22:27 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:22:27 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:22:27 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:22:27 #5 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:22:27 #6 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:22:27 #7 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:22:55 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 18-19)
+
+[2025-05-05 12:22:55 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 21904@Anne
+
+[2025-05-05 12:22:55 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:22:55 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:22:55 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:22:55 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:22:55 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:22:55 #8 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:26:02 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 20-20)
+
+[2025-05-05 12:26:02 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 61136@Anne
+
+[2025-05-05 12:26:02 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:26:02 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:26:02 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:26:02 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:26:02 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:26:02 #8 type] 
+Type domain.Rating is not enhanced.
+
+[2025-05-05 12:27:16 #9 type.registry] 
+New type domain.Car
+
+[2025-05-05 12:27:16 #10 type] 
+Type domain.Car is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:27:31 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' has been recovered (tr. 21-22)
+
+[2025-05-05 12:27:31 #2 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 63600@Anne
+
+[2025-05-05 12:27:32 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:27:32 #4 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:27:32 #5 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:27:32 #6 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:27:32 #7 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:27:32 #8 type] 
+Type domain.Rating is not enhanced.
+
+[2025-05-05 12:27:32 #9 type] 
+Type domain.Car is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:28:04 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 55260@Anne
+
+[2025-05-05 12:28:04 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:28:04 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:28:04 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:28:04 #5 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:28:04 #6 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:28:04 #7 type] 
+Type domain.Rating is not enhanced.
+
+[2025-05-05 12:28:04 #8 type] 
+Type domain.Car is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:32:24 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 62476@Anne
+
+[2025-05-05 12:32:24 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:32:24 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:32:24 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:32:24 #5 type] 
+Type domain.Mail is not enhanced.
+
+[2025-05-05 12:32:24 #6 type] 
+Type domain.Reservation is not enhanced.
+
+[2025-05-05 12:32:24 #7 type] 
+Type domain.Rating is not enhanced.
+
+[2025-05-05 12:32:24 #8 type] 
+Type domain.Car is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-05-05 12:33:19 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 6440@Anne
+
+[2025-05-05 12:33:19 #2 type.registry] 
+New type domain.Driver
+
+[2025-05-05 12:33:19 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-05-05 12:33:19 #4 type.registry] 
+New type domain.Ride
+
+[2025-05-05 12:33:19 #5 type] 
+Type domain.Ride is not enhanced.
+
+[2025-05-05 12:33:19 #6 type.registry] 
+New type domain.Passenger
+
+[2025-05-05 12:33:19 #7 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-05-05 12:33:19 #8 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2025-05-05 12:33:19 #9 type.registry] 
+New type java.util.Vector<domain.Ride>
+
+[2025-05-05 12:33:19 #10 type.registry] 
+New type java.util.Vector<domain.Passenger>
+
