@@ -302,7 +302,7 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.close();
     }
     
-    public void añadirDinero(Driver conductor, float dineros) {
+    public void anadirDinero(Driver conductor, float dineros) {
     	dbManager.open();
     	dbManager.añadirDinero(conductor, dineros);
     	dbManager.close();
