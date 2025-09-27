@@ -97,10 +97,7 @@ public class MyRatingGUI extends JFrame {
 		list.setModel(rides);
 		
 		JButton btnGuardar = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MyRatingGUI.Guardar")); //$NON-NLS-1$ //$NON-NLS-2$
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		btnGuardar.setBounds(95, 218, 111, 32);
 		contentPane.add(btnGuardar);
 		
