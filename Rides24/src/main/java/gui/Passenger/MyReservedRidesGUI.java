@@ -62,8 +62,9 @@ public class MyReservedRidesGUI extends JFrame {
 		
 		list.setModel(rides);
 		for (Reservation aux: lista) {
-			if(!aux.isProcesado())
-			rides.addElement(aux);
+			if(!aux.isProcesado()){
+				rides.addElement(aux);
+			}
 		}
 		
 		btnClose.addActionListener(new ActionListener() {

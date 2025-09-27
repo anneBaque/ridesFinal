@@ -42,16 +42,16 @@ public class DataAccess  {
      public DataAccess()  {
 		if (c.isDatabaseInitialized()) {
 			String fileName=c.getDbFilename();
-
-			File fileToDelete= new File(fileName);
-			if(fileToDelete.delete()){
-				File fileToDeleteTemp= new File(fileName+"$");
-				fileToDeleteTemp.delete();
-
-				  System.out.println("File deleted");
-				} else {
-				  System.out.println("Operation failed");
-				}
+			try {
+				Files.delete(Path.of(fileName));
+				System.out.println("File deleted");
+			}catch(NoSuchFileException e) {
+				System.out.println("No existe: "+ e.getMessage());
+			}catch(DirectoryNotEmptyException e) {
+				System.out.println("Directorio no vacío: "+ e.getMessage());
+			}catch (IOException e) {
+				System.out.println("Error al borrar: "+ e.getMessage());
+			}
 		}
 		open();
 		if  (c.isDatabaseInitialized())initializeDB();
