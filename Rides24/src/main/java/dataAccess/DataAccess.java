@@ -40,6 +40,7 @@ import domain.Reservation;
 public class DataAccess  {
 	private  EntityManager  db;
 	private  EntityManagerFactory emf;
+	private String queryreservaEmail = "SELECT r FROM Reservation r WHERE r.pasEmail=?1";
 
 
 	ConfigXML c=ConfigXML.getInstance();
@@ -328,7 +329,6 @@ public void open(){
 		Reservation existe = db.find(Reservation.class, res.getIdRes());
 		if (existe == null) {
 		db.persist(res);
-		System.out.println("CACAOLAT");
 		añadido=true;
 		}
 		db.getTransaction().commit();
@@ -337,7 +337,7 @@ public void open(){
 	
 	public List<Reservation> getAllReservations(String email) {
 		List<Reservation> res = new ArrayList<>();	
-		TypedQuery<Reservation> query = db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class);   
+		TypedQuery<Reservation> query = db.createQuery(queryreservaEmail,Reservation.class);   
 		query.setParameter(1, email);
 		List<Reservation> reservations = query.getResultList();
 	 	 for (Reservation ride:reservations){
@@ -391,7 +391,7 @@ public void open(){
 	
 	public List<Ride> acceptedReservation(String email) {
 		List<Reservation> res = new ArrayList<>();	
-		TypedQuery<Reservation> query = db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class);   
+		TypedQuery<Reservation> query = db.createQuery(queryreservaEmail,Reservation.class);   
 		query.setParameter(1, email);
 		List<Reservation> reservations = query.getResultList();
 		List<Ride> viajes = new ArrayList<>();
@@ -408,7 +408,7 @@ public void open(){
 	
 	public List<Ride> rejectedReservation(String email) {
 		List<Reservation> res = new ArrayList<>();	
-		TypedQuery<Reservation> query = db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class);   
+		TypedQuery<Reservation> query = db.createQuery(queryreservaEmail,Reservation.class);   
 		query.setParameter(1, email);
 		List<Reservation> reservations = query.getResultList();
 		List<Ride> viajes = new ArrayList<>();
