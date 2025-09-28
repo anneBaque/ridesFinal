@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
 import domain.Driver;
+import domain.Passenger;
+import domain.Reservation;
 import domain.Ride;
 
 
@@ -56,7 +58,7 @@ public class TestDataAccess {
 	}
 
 	public boolean removeDriver(String driverEmail) {
-		System.out.println(">> TestDataAccess: removeRide");
+		System.out.println(">> TestDataAccess: removeDriver");
 		Driver d = db.find(Driver.class, driverEmail);
 		if (d!=null) {
 			db.getTransaction().begin();
@@ -127,8 +129,47 @@ public class TestDataAccess {
 			return null;
 
 		}
+		
+		
 
 
+		public boolean removePassenger(String passengerEmail) {
+			System.out.println(">> TestDataAccess: removePassenger");
+			Passenger p = db.find(Passenger.class, passengerEmail);
+			if (p!=null) {
+				db.getTransaction().begin();
+				db.remove(p);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+	    }
+		
+		
+		
+		public boolean removeReservation(int idRes) {
+			System.out.println(">> TestDataAccess: removeReservation");
+			Reservation r = db.find(Reservation.class, idRes);
+			if (r!=null) {
+				db.getTransaction().begin();				
+				db.remove(r);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+	    }
+		
+		public boolean removeRide2(int idRide) {
+			System.out.println(">> TestDataAccess: removeRide2");
+			Ride r = db.find(Ride.class, idRide);
+			if (r!=null) {
+				db.getTransaction().begin();
+				db.remove(r);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+	    }
 		
 }
 
