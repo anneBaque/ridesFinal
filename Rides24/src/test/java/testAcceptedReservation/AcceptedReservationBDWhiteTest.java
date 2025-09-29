@@ -139,8 +139,8 @@ public class AcceptedReservationBDWhiteTest {
 
 
 	        res = new Reservation(ride.getRideNumber(), pasEmail);
-	        reservaHecha = sut.makeReservation(res);
 	        res.setEstado(true);
+	        reservaHecha = sut.makeReservation(res);
 	        
 	        viajes = sut.acceptedReservation(pasEmail);
 	        assertTrue(viajes.isEmpty());
@@ -202,9 +202,10 @@ public class AcceptedReservationBDWhiteTest {
 
 
 	        res = new Reservation(ride.getRideNumber(), pasEmail);
-	        reservaHecha = sut.makeReservation(res);
 	        res.setEstado(true);
 	        res.setProcesado(true);
+	        reservaHecha = sut.makeReservation(res);
+
 	        viajes = sut.acceptedReservation(pasEmail);
 	        assertTrue(!viajes.isEmpty());
 	        
