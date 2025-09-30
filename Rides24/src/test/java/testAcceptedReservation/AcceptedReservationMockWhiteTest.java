@@ -112,7 +112,7 @@ public class AcceptedReservationMockWhiteTest {
 	    Date rideDate = null;
 	    Ride ride = null;
 	    String driEmail = "DriverPrueba";
-	    String pasEmail = "letraB@gmail.com";
+	    String pasEmail = "letraC@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
 	    
@@ -146,7 +146,7 @@ public class AcceptedReservationMockWhiteTest {
 	    Date rideDate = null;
 	    Ride ride = null;
 	    String driEmail = "DriverPrueba";
-	    String pasEmail = "letraB@gmail.com";
+	    String pasEmail = "letraD@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
 	    
