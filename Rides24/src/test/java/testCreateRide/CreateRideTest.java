@@ -28,13 +28,15 @@ public class CreateRideTest {
 
 	private Driver driver; 
 
+	private static final String RIDE_FROM_DONOSTIA="Donostia";
+
 	@Test
 	//sut.createRide:  The Driver("iker driver", "driver1@gmail.com") HAS one ride "from" "to" in that "date". 
 	public void test1() {
 		String driverEmail="driver1@gmail.com";
 		String driverName="Aitor Fernandez";
 
-		String rideFrom="Donostia";
+		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -88,7 +90,7 @@ public class CreateRideTest {
 		String driverName="Aitor Fernandez";
 		String driverEmail="driver1@gmail.com";
 
-		String rideFrom="Donostia";
+		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -156,7 +158,7 @@ public class CreateRideTest {
 				//define parameters
 				driver=null;
 
-				String rideFrom="Donostia";
+				String rideFrom=RIDE_FROM_DONOSTIA;
 				String rideTo="Zarautz";
 				
 				String driverEmail=null;
