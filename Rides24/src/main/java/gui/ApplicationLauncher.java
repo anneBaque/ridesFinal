@@ -1,5 +1,8 @@
 package gui;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import java.awt.Color;
 import java.io.File;
 import java.net.URL;
@@ -35,18 +38,27 @@ public class ApplicationLauncher {
 		MainGUI a=new MainGUI(driver);
 		a.setVisible(true);
 		if(c.isDatabaseInitialized()) {
-			 File carpeta = new File("imagenes");
+			 Path carpeta = Paths.get("imagenes");
 			 //Eliminamos las imagenes de la base de datos antigua
-		        if (carpeta.exists() && carpeta.isDirectory()) {
-		            File[] archivos = carpeta.listFiles();
-		            if (archivos != null) {
-		                for (File archivo : archivos) {
-		                    archivo.delete();
-		                }
-		            }
-		            // Eliminar la carpeta después de vaciarla
-		            carpeta.delete();
-		        }
+		        if (Files.exists(carpeta) && Files.isDirectory(carpeta)) {
+					try (DirectoryStream<Path> archivos = Files.newDirectoryStream(carpeta)) { //iterar sobre el directorio
+						for (Path archivo : archivos) {
+							try{
+								Files.delete(archivo);
+							} catch (IOException e) {
+								System.err.println("Error al borrar el archivo: " + archivo + " -> " + e.getMessage());
+                			}
+						}
+					} catch (IOException e) {
+            			System.err.println("Error al leer " + carpeta + ": " + e.getMessage());
+        			}
+
+        			try {
+            			Files.delete(carpeta); // Eliminar la carpeta después de vaciarla
+        			} catch (IOException e) {
+            			System.err.println("Error al borrar la carpeta: " + carpeta + " -> " + e.getMessage());
+        			}
+				}	
 		}
 
 		try {
