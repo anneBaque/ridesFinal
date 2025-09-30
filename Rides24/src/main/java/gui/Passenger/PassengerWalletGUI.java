@@ -89,7 +89,7 @@ public class PassengerWalletGUI extends JFrame {
 						JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("PassengerWalletGUI.NumNegativo"));
 					}else {
 						lblDineros.setText(Float.toString(pasajero.getWallet().calcularSaldo()));
-						facade.añadirDinero(pasajero, input);
+						facade.anadirDinero(pasajero, input);
 						JFrame a = new CargaGUI();
 						a.setVisible(true);
 						btnClose_actionPerformed(e);

@@ -92,7 +92,7 @@ public class ReservedRidesDriverGUI extends JFrame {
 					Reservation reserva = (Reservation) list.getSelectedItem();
 					Ride r = facade.findRide(reserva.getIdRide());
 					Passenger p = facade.findPassenger(reserva.getPasEmail());
-					facade.añadirDinero(p, r.getPrice());
+					facade.anadirDinero(p, r.getPrice());
 					facade.rejectReservation(reserva);
 					lista.remove(reserva);
 					actualizarLista(lista,rides,conductor);

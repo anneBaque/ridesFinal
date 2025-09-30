@@ -145,11 +145,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>is1</groupId>
-			<artifactId>marroia1</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 </project>
