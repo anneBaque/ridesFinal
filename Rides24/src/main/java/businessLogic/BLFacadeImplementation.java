@@ -141,9 +141,9 @@ public class BLFacadeImplementation  implements BLFacade {
     
     public boolean storePassenger(String email, String nombre, String contra) {
     	dbManager.open();
-    	boolean añadido = dbManager.storePassenger(email, nombre, contra);
+    	boolean anadido = dbManager.storePassenger(email, nombre, contra);
     	dbManager.close();
-    	return añadido;
+    	return anadido;
     }
     
     public boolean storeDriver(String email, String nombre, String contra) {
