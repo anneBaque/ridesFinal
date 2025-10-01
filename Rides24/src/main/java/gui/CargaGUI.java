@@ -24,7 +24,6 @@ import java.awt.event.ActionEvent;
 
 public class CargaGUI extends JFrame {
 	
-    private Driver driver;
 	private static final long serialVersionUID = 1L;
 
 	private JPanel jContentPane = null;

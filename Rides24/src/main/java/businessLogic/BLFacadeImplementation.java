@@ -17,6 +17,9 @@ import domain.Rating;
 import domain.Reservation;
 import exceptions.RideMustBeLaterThanTodayException;
 import exceptions.RideAlreadyExistException;
+import java.util.logging.Logger;
+
+Logger logger=Logger.getLogger(BLFacadeImplementation.class.getName());
 
 /**
  * It implements the business logic as a web service.
@@ -25,9 +28,8 @@ import exceptions.RideAlreadyExistException;
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
 
-	public BLFacadeImplementation()  {		
-		System.out.println("Creating BLFacadeImplementation instance");
-		
+	public BLFacadeImplementation()  {
+		logger.info("Creating BLFacadeImplementation instance");
 		
 		    dbManager=new DataAccess();
 		    
