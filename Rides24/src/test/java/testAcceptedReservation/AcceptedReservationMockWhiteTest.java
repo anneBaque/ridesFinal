@@ -17,6 +17,7 @@ import javax.persistence.TypedQuery;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -63,17 +64,23 @@ public class AcceptedReservationMockWhiteTest {
 		persistenceMock.close();
     }
 	
+	@Test
 	public void test1() {
 		System.out.println("Test1");
 		List<Ride> viajes;
+		String pasEmail = "letraA@gmail.com";
 		sut.open();		
-		viajes = sut.acceptedReservation("letraA@gmail.com");
+		Mockito.when(db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class)).thenReturn(typeQueryReservations);
+	    Mockito.when(typeQueryReservations.setParameter(1,pasEmail)).thenReturn(typeQueryReservations);
+	    List<Reservation> reservas = new ArrayList<Reservation>();
+	    Mockito.when(typeQueryReservations.getResultList()).thenReturn(reservas);
+		viajes = sut.acceptedReservation(pasEmail);
 		assertTrue(viajes.isEmpty());
 		sut.close();	
 		
 	}
 	
-	
+	@Test
 	public void test2() {
 		System.out.println("Test2");
 	    List<Ride> viajes;
@@ -94,10 +101,11 @@ public class AcceptedReservationMockWhiteTest {
 	    Driver driver = new Driver(driEmail, "abcd");
 	    Mockito.when(db.find(Driver.class, driEmail)).thenReturn(driver);
 	    ride = new Ride("Bilbao", "Praga", rideDate, 4, 21 , driver);
+	    ride.setRideNumber(2);
 	    Mockito.when(db.find(Ride.class, ride.getRideNumber())).thenReturn(ride);
 	    res = new Reservation(ride.getRideNumber(), pasEmail);
 	    Mockito.when(db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class)).thenReturn(typeQueryReservations);
-	    Mockito.when(typeQueryReservations.setParameter(pasEmail,pasEmail)).thenReturn(typeQueryReservations);
+	    Mockito.when(typeQueryReservations.setParameter(1,pasEmail)).thenReturn(typeQueryReservations);
 	    List<Reservation> reservas = new ArrayList<Reservation>();
 	    reservas.add(res);
 	    Mockito.when(typeQueryReservations.getResultList()).thenReturn(reservas);
@@ -106,6 +114,7 @@ public class AcceptedReservationMockWhiteTest {
 	    sut.close();  
 	}
 	
+	@Test
 	public void test3() {
 		System.out.println("Test3");
 	    List<Ride> viajes;
@@ -126,11 +135,12 @@ public class AcceptedReservationMockWhiteTest {
 	    Driver driver = new Driver(driEmail, "abcd");
 	    Mockito.when(db.find(Driver.class, driEmail)).thenReturn(driver);
 	    ride = new Ride("Bilbao", "Praga", rideDate, 4, 21 , driver);
+	    ride.setRideNumber(2);
 	    Mockito.when(db.find(Ride.class, ride.getRideNumber())).thenReturn(ride);
 	    res = new Reservation(ride.getRideNumber(), pasEmail);
 	    res.setEstado(true);
 	    Mockito.when(db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class)).thenReturn(typeQueryReservations);
-	    Mockito.when(typeQueryReservations.setParameter(pasEmail,pasEmail)).thenReturn(typeQueryReservations);
+	    Mockito.when(typeQueryReservations.setParameter(1,pasEmail)).thenReturn(typeQueryReservations);
 	    List<Reservation> reservas = new ArrayList<Reservation>();
 	    reservas.add(res);
 	    Mockito.when(typeQueryReservations.getResultList()).thenReturn(reservas);
@@ -140,8 +150,9 @@ public class AcceptedReservationMockWhiteTest {
 
 	}
 	
+	@Test
 	public void test4() {
-		System.out.println("Test3");
+		System.out.println("Test4");
 	    List<Ride> viajes;
 	    Date rideDate = null;
 	    Ride ride = null;
@@ -160,12 +171,13 @@ public class AcceptedReservationMockWhiteTest {
 	    Driver driver = new Driver(driEmail, "abcd");
 	    Mockito.when(db.find(Driver.class, driEmail)).thenReturn(driver);
 	    ride = new Ride("Bilbao", "Praga", rideDate, 4, 21 , driver);
+	    ride.setRideNumber(2);
 	    Mockito.when(db.find(Ride.class, ride.getRideNumber())).thenReturn(ride);
 	    res = new Reservation(ride.getRideNumber(), pasEmail);
 	    res.setEstado(true);
 	    res.setProcesado(true);
 	    Mockito.when(db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class)).thenReturn(typeQueryReservations);
-	    Mockito.when(typeQueryReservations.setParameter(pasEmail,pasEmail)).thenReturn(typeQueryReservations);
+	    Mockito.when(typeQueryReservations.setParameter(1,pasEmail)).thenReturn(typeQueryReservations);
 	    List<Reservation> reservas = new ArrayList<Reservation>();
 	    reservas.add(res);
 	    Mockito.when(typeQueryReservations.getResultList()).thenReturn(reservas);
