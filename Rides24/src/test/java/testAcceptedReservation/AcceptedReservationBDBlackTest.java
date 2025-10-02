@@ -168,6 +168,7 @@ public class AcceptedReservationBDBlackTest {
 		List<Ride> viajes;
 		sut.open();	
 		viajes = sut.acceptedReservation(null);
+		assertTrue(viajes.isEmpty());
 		sut.close();
 		
 	}
