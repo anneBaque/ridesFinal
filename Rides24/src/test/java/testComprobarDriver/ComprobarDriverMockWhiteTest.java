@@ -19,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 
 import dataAccess.DataAccess;
 import domain.Driver;
+import domain.Ride;
 
 public class ComprobarDriverMockWhiteTest {
 
@@ -57,19 +58,42 @@ public class ComprobarDriverMockWhiteTest {
 	@Test
 	public void test1() {
 		System.out.println("Test1");
-		List<Ride> viajes;
 		String email = "driver";
-		sut.open();		
-		Mockito.when(db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1",Reservation.class)).thenReturn(typeQueryReservations);
-	    Mockito.when(typeQueryReservations.setParameter(1,pasEmail)).thenReturn(typeQueryReservations);
-	    List<Reservation> reservas = new ArrayList<Reservation>();
-	    Mockito.when(typeQueryReservations.getResultList()).thenReturn(reservas);
-		viajes = sut.acceptedReservation(pasEmail);
-		assertTrue(viajes.isEmpty());
-		sut.close();	
-		
+		sut.open();
+		Mockito.when(db.find(Driver.class, email)).thenReturn(null);
+		boolean existe = sut.comprobarDriver(email, "123");
+		assertTrue(!existe);
+		sut.close();
+	}
+	
+	@Test
+	public void test2() {
+		System.out.println("Test2");
+		String email = "driver";
+		String contra = "123";
+		Driver driver = new Driver(email, email);
+		driver.setContraseña(contra);
+		sut.open();
+		Mockito.when(db.find(Driver.class, email)).thenReturn(driver);
+		boolean existe = sut.comprobarDriver(email, "999"); //contraseña incorrecta
+		assertTrue(!existe);
+		sut.close();
 	}
 
+	@Test
+	public void test3() {
+		System.out.println("Test2");
+		String email = "driver";
+		String contra = "123";
+		Driver driver = new Driver(email, email);
+		driver.setContraseña(contra);
+		sut.open();
+		Mockito.when(db.find(Driver.class, email)).thenReturn(driver);
+		boolean existe = sut.comprobarDriver(email, contra);
+		assertTrue(existe);
+		sut.close();
+	}
 
+	
 
 }
