@@ -19,7 +19,6 @@ import exceptions.RideMustBeLaterThanTodayException;
 import exceptions.RideAlreadyExistException;
 import java.util.logging.Logger;
 
-Logger logger=Logger.getLogger(BLFacadeImplementation.class.getName());
 
 /**
  * It implements the business logic as a web service.
@@ -27,6 +26,7 @@ Logger logger=Logger.getLogger(BLFacadeImplementation.class.getName());
 @WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
+	Logger logger=Logger.getLogger(getClass().getName());
 
 	public BLFacadeImplementation()  {
 		logger.info("Creating BLFacadeImplementation instance");
