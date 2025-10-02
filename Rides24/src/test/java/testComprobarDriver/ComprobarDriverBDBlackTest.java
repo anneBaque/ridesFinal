@@ -40,4 +40,48 @@ public class ComprobarDriverBDBlackTest {
         }            
     }
 
+    @Test
+    //Driver existe y contraseña incorrecta
+    public void test2() {
+        System.out.println("Test2");
+        try{
+            testDA.open();
+            testDA.storeDriver(email, contra);
+            testDA.close();
+
+            existe = sut.comprobarDriver(email, "999"); // Contraseña incorrecta
+            assertTrue(!existe);
+        } catch (Exception e) {
+            fail();
+        } finally {
+            testDA.open();
+            testDA.removeDriver(email);
+            testDA.close();
+        }
+    }
+    
+    @Test
+    //email = null
+    public void test3() {
+        System.out.println("Test3");
+        try{
+            existe = sut.comprobarDriver(null, contra);
+            assertTrue(!existe);
+        } catch (Exception e) {
+            fail(); 
+        }
+    }
+    
+    @Test
+    //contraseña = null
+    public void test4() {
+        System.out.println("Test4");
+        try{
+            existe = sut.comprobarDriver(email, null);
+            assertTrue(!existe);
+        } catch (Exception e) { 
+            fail(); 
+        }
+    }
+    
 }
