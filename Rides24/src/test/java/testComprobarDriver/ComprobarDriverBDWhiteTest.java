@@ -1,5 +1,15 @@
 package testComprobarDriver;
 
+package testComprobarDriver;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import dataAccess.DataAccess;
+import domain.Driver;
+import testOperations.TestDataAccess;
+
 public class ComprobarDriverBDWhiteTest {
 
 	//sut: system under test
@@ -17,11 +27,11 @@ public class ComprobarDriverBDWhiteTest {
         String email = "fake drvier";
         String contra = "123";
         sut.open();
-        existe = sut.(email, contra);
+        existe = sut.comprobarDriver(email, contra);
         sut.close();
         assertTrue(!existe);
     }
-
+    
     @Test
     //El driver existe en la base de datos pero la contraseña es incorrecta
     public void test2() {
@@ -30,20 +40,21 @@ public class ComprobarDriverBDWhiteTest {
         String contra = "999"; // Contraseña incorrecta
         Driver driver;
 
-        testDA.open();
-        driver = testDA.createDriver(email, "123");
-        testDA.close();
-
         sut.open();
+        boolean anadido = sut.storeDriver(email, "driver", "123");
+        
         existe = sut.comprobarDriver(email, contra);
         sut.close();
         assertTrue(!existe);
 
-        testDA.open();
-        testDA.removeDriver(email);
-        testDA.close();
+        if(anadido) {
+        	testDA.open();
+        	testDA.removeDriver(email);
+        	testDA.close();
+        }
     }
 
+    
     @Test
     //El driver existe en la base de datos y la contraseña es correcta
     public void test3() {
@@ -52,17 +63,18 @@ public class ComprobarDriverBDWhiteTest {
         String contra = "123";
         Driver driver;
 
-        testDA.open();
-        driver = testDA.createDriver(email, contra);
-        testDA.close();
-
         sut.open();
+        boolean anadido = sut.storeDriver(email, "driver", contra);
+        
         existe = sut.comprobarDriver(email, contra);
-        sut.close();
         assertTrue(existe);
 
-        testDA.open();
-        testDA.removeDriver(email);
-        testDA.close();
+        if(anadido) {
+        	testDA.open();
+        	testDA.removeDriver(email);
+        	testDA.close();
+        }
+        sut.close();
     }
+    
 }
