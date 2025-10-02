@@ -29,8 +29,11 @@ public class ComprobarDriverBDBlackTest {
             testDA.storeDriver(email, contra);
             testDA.close();
 
+            sut.open();
             existe = sut.comprobarDriver(email, contra);
             assertTrue(existe);
+            sut.close();
+
         } catch (Exception e) {
             fail();
         } finally {
@@ -49,8 +52,11 @@ public class ComprobarDriverBDBlackTest {
             testDA.storeDriver(email, contra);
             testDA.close();
 
+            sut.open();
             existe = sut.comprobarDriver(email, "999"); // Contraseña incorrecta
             assertTrue(!existe);
+            sut.close();
+
         } catch (Exception e) {
             fail();
         } finally {
@@ -65,8 +71,11 @@ public class ComprobarDriverBDBlackTest {
     public void test3() {
         System.out.println("Test3");
         try{
+            sut.open();
             existe = sut.comprobarDriver(null, contra);
             assertTrue(!existe);
+            sut.close();
+
         } catch (Exception e) {
             fail(); 
         }
@@ -77,11 +86,14 @@ public class ComprobarDriverBDBlackTest {
     public void test4() {
         System.out.println("Test4");
         try{
+            sut.open();
             existe = sut.comprobarDriver(email, null);
             assertTrue(!existe);
+            sut.close();
+            
         } catch (Exception e) { 
             fail(); 
         }
     }
-    
+
 }
