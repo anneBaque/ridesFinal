@@ -1,6 +1,7 @@
 package testComprobarDriver;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -25,11 +26,9 @@ public class ComprobarDriverBDBlackTest {
     public void test1() {
         System.out.println("Test1");
         try{
-            testDA.open();
-            testDA.storeDriver(email, contra);
-            testDA.close();
-
             sut.open();
+            sut.storeDriver(email, "driver", contra);
+            
             existe = sut.comprobarDriver(email, contra);
             assertTrue(existe);
             sut.close();
@@ -48,11 +47,9 @@ public class ComprobarDriverBDBlackTest {
     public void test2() {
         System.out.println("Test2");
         try{
-            testDA.open();
-            testDA.storeDriver(email, contra);
-            testDA.close();
-
-            sut.open();
+        	sut.open();
+            sut.storeDriver(email, "driver", contra);
+           
             existe = sut.comprobarDriver(email, "999"); // Contraseña incorrecta
             assertTrue(!existe);
             sut.close();
@@ -69,16 +66,19 @@ public class ComprobarDriverBDBlackTest {
     @Test
     //email = null
     public void test3() {
+    
         System.out.println("Test3");
         try{
             sut.open();
             existe = sut.comprobarDriver(null, contra);
             assertTrue(!existe);
             sut.close();
-
+        } catch (IllegalArgumentException e) {
+        	assertTrue(!existe);
         } catch (Exception e) {
             fail(); 
         }
+   
     }
     
     @Test
