@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
-import domain.Driver;
 import testOperations.TestDataAccess;
 
 public class ComprobarDriverBDWhiteTest {
@@ -36,7 +35,6 @@ public class ComprobarDriverBDWhiteTest {
         System.out.println("Test2");
         String email = "driver test";
         String contra = "999"; // Contraseña incorrecta
-        Driver driver;
 
         sut.open();
         boolean anadido = sut.storeDriver(email, "driver", "123");
@@ -59,7 +57,6 @@ public class ComprobarDriverBDWhiteTest {
         System.out.println("Test3");
         String email = "driver test";
         String contra = "123";
-        Driver driver;
 
         sut.open();
         boolean anadido = sut.storeDriver(email, "driver", contra);

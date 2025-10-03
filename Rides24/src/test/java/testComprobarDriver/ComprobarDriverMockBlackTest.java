@@ -1,13 +1,11 @@
 package testComprobarDriver;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,7 +17,6 @@ import org.mockito.MockitoAnnotations;
 
 import dataAccess.DataAccess;
 import domain.Driver;
-import domain.Reservation;
 
 public class ComprobarDriverMockBlackTest {
 
@@ -33,9 +30,6 @@ public class ComprobarDriverMockBlackTest {
 	protected  EntityManager db;
 	@Mock
     protected  EntityTransaction  et;
-	
-	@Mock 
-	TypedQuery<Reservation> typeQueryReservations;
 	
 
 	@Before

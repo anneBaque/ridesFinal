@@ -27,8 +27,6 @@ import dataAccess.DataAccess;
 import domain.Driver;
 import domain.Reservation;
 import domain.Ride;
-import exceptions.RideAlreadyExistException;
-import exceptions.RideMustBeLaterThanTodayException;
 
 public class AcceptedReservationMockWhiteTest {
 

@@ -1,6 +1,5 @@
 package testAcceptedReservation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
-import domain.Passenger;
 import domain.Reservation;
 import domain.Ride;
 import exceptions.RideAlreadyExistException;
