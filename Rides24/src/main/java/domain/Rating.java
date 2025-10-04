@@ -13,7 +13,7 @@ public class Rating {
 	private int idRating;
 	private String email;
 	private int idRide;
-	private int rating;
+	private int ratingValue;
 	private String mensaje;
 	private String emailConductor;
 	private String respuesta;
@@ -41,7 +41,7 @@ public class Rating {
 	
 	@Override
 	public String toString() {
-		return "Valoracion por el usuario "+email+": \n Rating: "+rating+"/10 \n Comentarios: " +mensaje;  
+		return "Valoracion por el usuario "+email+": \n Rating: "+ratingValue+"/10 \n Comentarios: " +mensaje;  
 	}
 	
 	public int getIdRating() {

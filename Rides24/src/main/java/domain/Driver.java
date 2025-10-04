@@ -131,7 +131,7 @@ public class Driver implements Serializable {
 		while (!found && index<=rides.size()) {
 			r=rides.get(++index);
 			if ( (java.util.Objects.equals(r.getFrom(),from)) && (java.util.Objects.equals(r.getTo(),to)) && (java.util.Objects.equals(r.getDate(),date)) )
-			found=true;
+				found=true;
 		}
 			
 		if (found) {

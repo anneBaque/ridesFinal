@@ -86,8 +86,9 @@ public class CargaGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				
-			}
+     // Se ha dejado vacío intencionadamente porque la operación de cierre predeterminada 
+     // ya la gestiona el marco (por ejemplo, EXIT_ON_CLOSE).
+   }
 		});
 		
 	}
