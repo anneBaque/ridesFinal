@@ -7,6 +7,7 @@ import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,7 +50,7 @@ public class DataAccess  {
 		if (c.isDatabaseInitialized()) {
 			String fileName=c.getDbFilename();
 			try {
-				Files.delete(Path.of(fileName));
+				Files.delete(Paths.get(fileName));
 				System.out.println("File deleted");
 			}catch(NoSuchFileException e) {
 				System.out.println("No existe: "+ e.getMessage());

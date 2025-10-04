@@ -100,8 +100,11 @@ public class Passenger implements Serializable {
 		Ride r=null;
 		while (!found && index<=rides.size()) {
 			r=rides.get(++index);
-			if ( (java.util.Objects.equals(r.getFrom(),from)) && (java.util.Objects.equals(r.getTo(),to)) && (java.util.Objects.equals(r.getDate(),date)) )
-			found=true;
+			if ( (java.util.Objects.equals(r.getFrom(),from)) && 
+				(java.util.Objects.equals(r.getTo(),to)) && 
+				(java.util.Objects.equals(r.getDate(),date)) ) {
+				found=true;
+			}
 		}
 			
 		if (found) {
