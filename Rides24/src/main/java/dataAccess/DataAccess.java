@@ -392,8 +392,6 @@ public void open(){
 	}
 	
 	public List<Ride> acceptedReservation(String email) {
-		db.getTransaction().begin();
-	    db.getTransaction().commit();
 		List<Reservation> res = new ArrayList<>();	
 		TypedQuery<Reservation> query = db.createQuery(queryreservaEmail,Reservation.class);   
 		query.setParameter(1, email);
@@ -405,9 +403,7 @@ public void open(){
 				viajes.add(ride);
 			}
 		}
-		
 		return viajes;
-		
 	}
 	
 	public List<Ride> rejectedReservation(String email) {
