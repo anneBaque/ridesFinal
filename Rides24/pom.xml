@@ -51,7 +51,7 @@
 		<sonar.organization>is2-baquedano</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>is2-baquedano_rides</sonar.projectKey>
-		<sonar.login>1e541e8a6f039cd54200d85fca779e08b287d196</sonar.login>
+		<sonar.login>d6e88ae1058c8ad008389fcc4898b41d952a2506</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
