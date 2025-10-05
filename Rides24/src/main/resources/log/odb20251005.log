@@ -1,0 +1,29 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-10-05 18:57:16 #1 store] 
+Database 'C:\Users\1153342\git\ridesFinal7\Rides24\src\main\resources\rides.temp' has been recovered (tr. 185-188)
+
+[2025-10-05 18:57:16 #2 store] 
+Database 'C:\Users\1153342\git\ridesFinal7\Rides24\src\main\resources\rides.temp' is opened by 27072@Anne
+
+[2025-10-05 18:57:16 #3 type] 
+Type domain.Driver is not enhanced.
+
+[2025-10-05 18:57:16 #4 type] 
+Type domain.Monedero is not enhanced.
+
+[2025-10-05 18:57:16 #5 type] 
+Type domain.Ride is not enhanced.
+
+[2025-10-05 18:57:16 #6 type] 
+Type domain.Transaction is not enhanced.
+
+[2025-10-05 18:57:16 #7 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-10-05 18:57:16 #8 type] 
+Type domain.Mail is not enhanced.
+
+[2025-10-05 18:57:16 #9 type] 
+Type domain.Reservation is not enhanced.
+
