@@ -63,6 +63,15 @@ public class Ride implements Serializable {
 
 	}
 	
+	public Ride(String from, String to,  Date date, int nPlaces, float price) {
+		this.from = from;
+		this.to = to;
+		this.nPlaces = nPlaces;
+		this.date=date;
+		this.price=price;
+		this.plazasOcupadas = 0;
+	}
+	
 	/**
 	 * Get the  number of the ride
 	 * 

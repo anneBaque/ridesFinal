@@ -155,20 +155,20 @@ public class DataAccess  {
 	 * @throws RideMustBeLaterThanTodayException if the ride date is before today 
  	 * @throws RideAlreadyExistException if the same ride already exists for the driver
 	 */
-	public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail) throws  RideAlreadyExistException, RideMustBeLaterThanTodayException {
-		System.out.println(">> DataAccess: createRide=> from= "+from+" to= "+to+" driver="+driverEmail+" date "+date);
+	public Ride createRide(Ride r,  String driverEmail) throws  RideAlreadyExistException, RideMustBeLaterThanTodayException {
+		System.out.println(">> DataAccess: createRide=> from= "+r.getFrom()+" to= "+r.getTo()+" driver="+driverEmail+" date "+r.getDate());
 		try {
-			if(new Date().compareTo(date)>0) {
+			if(new Date().compareTo(r.getDate())>0) {
 				throw new RideMustBeLaterThanTodayException(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.ErrorRideMustBeLaterThanToday"));
 			}
 			db.getTransaction().begin();
 			
 			Driver driver = db.find(Driver.class, driverEmail);
-			if (driver.doesRideExists(from, to, date)) {
+			if (driver.doesRideExists(r.getFrom(), r.getTo(), r.getDate())) {
 				db.getTransaction().commit();
 				throw new RideAlreadyExistException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.RideAlreadyExist"));
 			}
-			Ride ride = driver.addRide(from, to, date, nPlaces, price);
+			Ride ride = driver.addRide(r.getFrom(), r.getTo(), r.getDate(),(int) r.getnPlaces(), r.getPrice());
 			//next instruction can be obviated
 			db.persist(driver); 
 			db.getTransaction().commit();
@@ -369,12 +369,10 @@ public void open(){
 			actu.setProcesado(true);
 
 			if (viaje==null || viaje.getPlazasOcupadas() == viaje.getnPlaces()) {
-			 System.out.println(reserva.getIdRide() + " no está en la base de datos");
-			reservado = false;
+				reservado = false;
 			}else {
-			viaje.setPlazasOcupadas(1+viaje.getPlazasOcupadas());;
-			actu.setEstado(true);
-			 System.out.println(viaje + " ha sido actualizado");
+				viaje.setPlazasOcupadas(1+viaje.getPlazasOcupadas());;
+				actu.setEstado(true);
 			}
 			db.getTransaction().commit();
 			return reservado;
@@ -498,10 +496,8 @@ public void open(){
 	public boolean storeCar(Car coche) {
 		boolean añadido=false;
 		db.getTransaction().begin();
-		TypedQuery<Car> query =db.createQuery("SELECT c FROM Car c WHERE c.emailConductor=?1", Car.class);
-		query.setParameter(1, coche.getEmailConductor());
-		List<Car> existe = query.getResultList();
-		if (existe.isEmpty()) {
+		Car existe = findCar(coche.getEmailConductor());
+		if (existe != null) {
 		db.persist(coche);
 		añadido=true;
 		}

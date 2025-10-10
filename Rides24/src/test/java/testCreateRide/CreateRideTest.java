@@ -38,6 +38,7 @@ public class CreateRideTest {
 
 		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
+		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
@@ -48,6 +49,7 @@ public class CreateRideTest {
 			e.printStackTrace();
 		}	
 		boolean existDriver=false;
+		Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 		try {
 			
 			//define parameters
@@ -61,7 +63,7 @@ public class CreateRideTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+		    sut.createRide(ride1, driverEmail);
 			sut.close();
 			
 			fail();
@@ -92,7 +94,7 @@ public class CreateRideTest {
 
 		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
-		
+		String[] args = {rideFrom, rideTo, driverEmail};
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
@@ -101,6 +103,8 @@ public class CreateRideTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
+
 		
 		try {
 			//Check if exist this ride for this driver, and if exist, remove it.
@@ -113,7 +117,7 @@ public class CreateRideTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			Ride ride=sut.createRide(ride1, driverEmail);
 			sut.close();
 			//verify the results
 			assertNotNull(ride);
@@ -160,8 +164,9 @@ public class CreateRideTest {
 
 				String rideFrom=RIDE_FROM_DONOSTIA;
 				String rideTo="Zarautz";
-				
 				String driverEmail=null;
+				String[] args = {rideFrom, rideTo, driverEmail};
+
 
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -173,11 +178,11 @@ public class CreateRideTest {
 					e.printStackTrace();
 				}	
 				
-				
+				Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 				
 				//invoke System Under Test (sut)  
 				sut.open();
-				Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+				Ride ride=sut.createRide(ride1, driverEmail);
 				System.out.println("ride "+ride);
 
 				//verify the results
@@ -209,7 +214,8 @@ public class CreateRideTest {
 		String driverEmail="driver1@gmail.com";
 		String rideFrom=null;
 		String rideTo="Zarautz";
-		
+		String[] args = {rideFrom, rideTo, driverEmail};
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
@@ -219,10 +225,11 @@ public class CreateRideTest {
 			e.printStackTrace();
 		}	
 		Ride ride=null;
+		Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 		try {
 			//invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			 ride=sut.createRide(ride1, driverEmail);
 			sut.close();			
 			
 			//verify the results

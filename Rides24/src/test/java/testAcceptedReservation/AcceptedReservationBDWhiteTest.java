@@ -51,12 +51,13 @@ public class AcceptedReservationBDWhiteTest {
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
 	    
+	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
 	    } catch (ParseException e) {
 	        fail("Error al parsear la fecha: " + e.getMessage());
 	    }
-
+	    Ride ride1 = new Ride("Bilbao", "Praga",rideDate, 5, 10);
 	    sut.open(); 
 	    
 	    boolean anadidoDriver = false;
@@ -68,7 +69,7 @@ public class AcceptedReservationBDWhiteTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
@@ -111,13 +112,15 @@ public class AcceptedReservationBDWhiteTest {
 	    String pasEmail = "letraC@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
+
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
 	    } catch (ParseException e) {
 	        fail("Error al parsear la fecha: " + e.getMessage());
 	    }
-
+	    Ride ride1 = new Ride("Bilbao", "Praga",rideDate, 5, 10);
+	    
 	    sut.open();  
 	    
 	    boolean anadidoDriver = false;
@@ -129,7 +132,7 @@ public class AcceptedReservationBDWhiteTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
@@ -180,7 +183,7 @@ public class AcceptedReservationBDWhiteTest {
 	    } catch (ParseException e) {
 	        fail("Error al parsear la fecha: " + e.getMessage());
 	    }
-
+	    Ride ride1 = new Ride("Bilbao", "Praga",rideDate, 5, 10);
 	    sut.open();  
 	    
 	    boolean anadidoDriver = false;
@@ -192,7 +195,7 @@ public class AcceptedReservationBDWhiteTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }

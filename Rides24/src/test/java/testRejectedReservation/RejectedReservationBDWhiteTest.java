@@ -49,7 +49,6 @@ public class RejectedReservationBDWhiteTest {
 	    String pasEmail = "b@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
-	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
 	    } catch (ParseException e) {
@@ -60,6 +59,7 @@ public class RejectedReservationBDWhiteTest {
 	    
 	    boolean anadidoDriver = false;
 	    boolean reservaHecha = false;
+		Ride ride1 = new Ride("Bilbao", "Praga", rideDate, 5, 10);
 
 	    try {
 	        if (sut.storeDriver(driEmail, "Driver1", "prueba")) {
@@ -67,7 +67,7 @@ public class RejectedReservationBDWhiteTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
@@ -110,6 +110,7 @@ public class RejectedReservationBDWhiteTest {
 	    String pasEmail = "c@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
+	    String[] args = {"Bilbao", "Praga", driEmail};
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
@@ -121,14 +122,14 @@ public class RejectedReservationBDWhiteTest {
 	    
 	    boolean anadidoDriver = false;
 	    boolean reservaHecha = false;
-
+		Ride ride1 = new Ride("Bilbao", "Praga", rideDate, 5, 10);
 	    try {
 	        if (sut.storeDriver(driEmail, "Driver1", "prueba")) {
 	            anadidoDriver = true;
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
@@ -173,6 +174,7 @@ public class RejectedReservationBDWhiteTest {
 	    String pasEmail = "d@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
+	    String[] args = {"Bilbao", "Praga", driEmail};
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
@@ -184,14 +186,14 @@ public class RejectedReservationBDWhiteTest {
 	    
 	    boolean anadidoDriver = false;
 	    boolean reservaHecha = false;
-
+		Ride ride1 = new Ride("Bilbao", "Praga", rideDate, 5, 10);
 	    try {
 	        if (sut.storeDriver(driEmail, "Driver1", "prueba")) {
 	            anadidoDriver = true;
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }

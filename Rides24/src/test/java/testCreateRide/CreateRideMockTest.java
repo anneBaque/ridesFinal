@@ -81,6 +81,7 @@ public class CreateRideMockTest {
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
 		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
@@ -89,6 +90,7 @@ public class CreateRideMockTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		Ride ride = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 		try {
 					
 			 driver=new Driver(driverEmail,driverName);
@@ -99,7 +101,7 @@ public class CreateRideMockTest {
 			
 			//invoke System Under Test (sut)  
 			sut.open();
-		    sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+		    sut.createRide(ride, driverEmail);
 			sut.close();
 			
 			fail();
@@ -122,6 +124,7 @@ public class CreateRideMockTest {
 
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
+		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
@@ -131,6 +134,7 @@ public class CreateRideMockTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 		
 		try {
 			Driver driver1=new Driver(driverEmail,driverName);
@@ -140,7 +144,7 @@ public class CreateRideMockTest {
 					
 			//invoke System Under Test (sut)  
 			sut.open();
-			Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			Ride ride=sut.createRide(ride1, driverEmail);
 			sut.close();
 			//verify the results
 			assertNotNull(ride);
@@ -178,6 +182,7 @@ public class CreateRideMockTest {
 				String rideTo="Zarautz";
 				
 				String driverEmail=null;
+				String[] args = {rideFrom, rideTo, driverEmail};
 
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -189,12 +194,12 @@ public class CreateRideMockTest {
 					e.printStackTrace();
 				}	
 				
-				
+				Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 				Mockito.when(db.find(Driver.class, null)).thenThrow(IllegalArgumentException.class);
 				
 				//invoke System Under Test (sut)  
 				sut.open();
-				Ride ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+				Ride ride=sut.createRide(ride1, driverEmail);
 				System.out.println("ride "+ride);
 
 				//verify the results
@@ -230,6 +235,7 @@ public class CreateRideMockTest {
 		String driverEmail="driver1@gmail.com";
 		String rideFrom=null;
 		String rideTo="Zarautz";
+		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
@@ -240,6 +246,7 @@ public class CreateRideMockTest {
 			e.printStackTrace();
 		}	
 		Ride ride=null;
+		Ride ride1 = new Ride(rideFrom, rideTo, rideDate, 0, 0);
 		try {
 			//configure the state through mocks 
 
@@ -248,7 +255,7 @@ public class CreateRideMockTest {
 			
 	        //invoke System Under Test (sut)  
 			sut.open();
-			 ride=sut.createRide(rideFrom, rideTo, rideDate, 0, 0, driverEmail);
+			 ride=sut.createRide(ride1, driverEmail);
 			sut.close();			
 			//verify the results
 			assertNull(ride);

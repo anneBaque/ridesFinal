@@ -44,7 +44,6 @@ public class AcceptedReservationBDBlackTest {
 		System.out.println("Test2");
 	    List<Ride> viajes;
 	    Date rideDate = null;
-	    Ride ride = null;
 	    String driEmail = "DriverPrueba";
 	    String pasEmail = "letraB@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -55,7 +54,8 @@ public class AcceptedReservationBDBlackTest {
 	    } catch (ParseException e) {
 	        fail("Error al parsear la fecha: " + e.getMessage());
 	    }
-
+	    Ride ride1 = new Ride("Bilbao", "Praga",rideDate, 5, 10);
+	    Ride ride = null;
 	    sut.open(); 
 	    
 	    boolean anadidoDriver = false;
@@ -67,7 +67,7 @@ public class AcceptedReservationBDBlackTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
@@ -105,11 +105,11 @@ public class AcceptedReservationBDBlackTest {
 		System.out.println("Test3");
 	    List<Ride> viajes;
 	    Date rideDate = null;
-	    Ride ride = null;
 	    String driEmail = "DriverPrueba";
 	    String pasEmail = "letraD@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
+
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
@@ -117,6 +117,8 @@ public class AcceptedReservationBDBlackTest {
 	        fail("Error al parsear la fecha: " + e.getMessage());
 	    }
 
+	    Ride ride1 = new Ride("Bilbao", "Praga",rideDate, 5, 10);
+	    Ride ride = null;
 	    sut.open();  
 	    
 	    boolean anadidoDriver = false;
@@ -128,7 +130,7 @@ public class AcceptedReservationBDBlackTest {
 	        }
 
 	        try {
-	            ride = sut.createRide("Bilbao", "Praga", rideDate, 5, 10, driEmail);
+	            ride = sut.createRide(ride1, driEmail);
 	        } catch (RideAlreadyExistException | RideMustBeLaterThanTodayException e) {
 	            fail(e.getMessage());
 	        }
