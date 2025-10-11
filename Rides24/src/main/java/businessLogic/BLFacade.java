@@ -51,7 +51,7 @@ public interface BLFacade  {
 	 */
    @WebMethod
    public Ride createRide( Ride r, String driverEmail) throws RideMustBeLaterThanTodayException, RideAlreadyExistException;
-	
+
 	
 	/**
 	 * This method retrieves the rides from two locations on a given date 
