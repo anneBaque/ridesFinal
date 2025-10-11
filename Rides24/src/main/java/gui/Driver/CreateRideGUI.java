@@ -178,8 +178,8 @@ public class CreateRideGUI extends JFrame {
 				BLFacade facade = MainGUI.getBusinessLogic();
 				int inputSeats = Integer.parseInt(jTextFieldSeats.getText());
 				float price = Float.parseFloat(jTextFieldPrice.getText());
-
-				Ride r=facade.createRide(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price, driver.getEmail());
+				Ride rParam = new Ride(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price);
+				Ride r=facade.createRide(rParam, driver.getEmail());
 				jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"));
 
 			} catch (RideMustBeLaterThanTodayException | RideAlreadyExistException e1) {
