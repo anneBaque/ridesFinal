@@ -221,7 +221,7 @@ Ahora main solo orquesta el flujo.
 Exceso de parámetros - Mikel León Ramos
 
 Código inicial:
-en la clase Rides24/src/main/java/gui/Driver/CreateRideGUI.java el método createRide
+en la clase Rides24/src/main/java/businessLogic/BLFacadeImplementation.java el método BLFacadeImplementation
 
 public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail ) throws RideMustBeLaterThanTodayException, RideAlreadyExistException{
 	   
@@ -239,8 +239,28 @@ como consecuencia del cambio tambien tendremos que modificar la interfaz BLFacad
 y el método jButtonCreate_actionPerformed de la clase CreateRideGUI:
 
 	Ride r=facade.createRide(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price, driver.getEmail());
-	jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"));
 
 Código refactorizado:
 
+en el método creatRide de la clase BLFacadeImplementation (donde estaba el bad smell):
 
+public Ride createRide(Ride r, String driverEmail ) throws RideMustBeLaterThanTodayException, RideAlreadyExistException{
+	   
+		dbManager.open();
+		Ride ride=dbManager.createRide(r, driverEmail);		
+		dbManager.close();
+		return ride;
+   }
+
+en la interfaz BLFacade:
+	public Ride createRide( Ride r, String driverEmail) throws RideMustBeLaterThanTodayException, RideAlreadyExistException;
+
+en la clase CreateRideGUI:
+	Ride rParam = new Ride(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price);
+	Ride r=facade.createRide(rParam, driver.getEmail());
+
+Descripción:
+El bad smell se basa en el exceso de parámetros de un método, en este caso createRide tenía 6 parámetos, de los cuales 5 se pueden
+agrupar ya que forman parte de los atributos de una clase ya existente en el proyecto. La refactorización ha consistido en agrupar
+esos 5 parámetros sobrantes en un objeto Ride, el sexto parámetro no ha sido modificado ya que se usa de forma independiente. 
+Además se ha tenido que modificar las llamadas a este método desde las distintas clases del sistema.
