@@ -1,4 +1,4 @@
-Duplicate code 1:
+**Duplicate code 1:**
 
 Codigo inicial en src/main/java/dataAccess/ObjectdbManagerServer.java metodo ObjectdbManagerServer:
  //line 76
@@ -14,7 +14,7 @@ try {
   } catch (Exception ioe) {
       System.out.println (ioe);
 	}
-
+'
 Codigo refactorizado:
 
 executeCommand("start")
