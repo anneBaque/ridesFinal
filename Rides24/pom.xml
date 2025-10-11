@@ -33,7 +33,11 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+			 <plugin>
+      <groupId>org.sonarsource.scanner.maven</groupId>
+      <artifactId>sonar-maven-plugin</artifactId>
+      <version>3.10.0.2594</version>
+    </plugin>
 		</plugins>
 	</build>
 	<repositories>
@@ -51,7 +55,7 @@
 		<sonar.organization>is2-baquedano</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>is2-baquedano_rides</sonar.projectKey>
-		<sonar.login>d6e88ae1058c8ad008389fcc4898b41d952a2506</sonar.login>
+		<sonar.login>71fb785d87e019e3420f43cf7f4b821617450f75</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
