@@ -127,7 +127,88 @@ public static void main(String[] args) {
 
 Código refactorizado:
 
+public class ApplicationLauncher { 
 
+	public static void main(String[] args) {
+
+		ConfigXML c=ConfigXML.getInstance();
+		
+		setUpLocale(c);
+
+	    if(c.isDatabaseInitialized()) {
+			cleanOldDbImages(c);
+		}
+	    
+	    Driver driver=new Driver("driver3@gmail.com","Test Driver");
+		MainGUI a=new MainGUI(driver);
+		a.setVisible(true);
+		
+		initializeBusinessLogic(c, a);
+
+	}
+	
+	public static void setUpLocale(ConfigXML config) {
+		System.out.println(config.getLocale());
+		Locale.setDefault(new Locale(config.getLocale()));
+		System.out.println("Locale: "+Locale.getDefault());
+	}
+	
+	public static void cleanOldDbImages(ConfigXML config) {
+		Path carpeta = Paths.get("imagenes");
+		//Eliminamos las imagenes de la base de datos antigua
+	    if (Files.exists(carpeta) && Files.isDirectory(carpeta)) {
+	    	try (DirectoryStream<Path> archivos = Files.newDirectoryStream(carpeta)) { //iterar sobre el directorio
+	    		for (Path archivo : archivos) {
+					try{
+						Files.delete(archivo);
+					} catch (IOException e) {
+						System.err.println("Error al borrar el archivo: " + archivo + " -> " + e.getMessage());
+           			}
+				}
+			} catch (IOException e) {
+       			System.err.println("Error al leer " + carpeta + ": " + e.getMessage());
+   			}
+
+   			try {
+       			Files.delete(carpeta); // Eliminar la carpeta después de vaciarla
+   			} catch (IOException e) {
+       			System.err.println("Error al borrar la carpeta: " + carpeta + " -> " + e.getMessage());
+   			}
+		}
+	}
+	
+	public static void initializeBusinessLogic(ConfigXML c, MainGUI a) {
+		try {
+			BLFacade appFacadeInterface;
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			
+			if (c.isBusinessLogicLocal()) {
+				DataAccess da= new DataAccess();
+				appFacadeInterface=new BLFacadeImplementation(da);
+			}	
+			
+			else { //If remote
+				String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";
+				URL url = new URL(serviceName);
+		 
+		        //1st argument refers to wsdl document above
+				//2nd argument is service name, refer to wsdl document above
+		        QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
+		        Service service = Service.create(url, qname);
+		        appFacadeInterface = service.getPort(BLFacade.class);
+			} 
+	
+			MainGUI.setBussinessLogic(appFacadeInterface);
+
+		}catch (Exception e) {
+			a.jLabelSelectOption.setText("Error: "+e.toString());
+			a.jLabelSelectOption.setForeground(Color.RED);	
+			
+			System.out.println("Error in ApplicationLauncher: "+e.toString());
+		}
+	}
+
+}
 
 Descripción:
 Originalmente el método main tenia demasiadas responsabilidades, lo que hacía que su código tuviese muchas 
@@ -135,3 +216,31 @@ lineas y de distintas tareas. Era dificil de leer y mantener. La refactorizació
 responsabilidades y sacarlas fuera del método, creando un método exclusivo para cada responsabilidad. 
 (configuración de idioma, limpieza de imagen antigua de BD, inicializacion de la logica de negocio...) 
 Ahora main solo orquesta el flujo.
+
+
+Exceso de parámetros - Mikel León Ramos
+
+Código inicial:
+en la clase Rides24/src/main/java/gui/Driver/CreateRideGUI.java el método createRide
+
+public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail ) throws RideMustBeLaterThanTodayException, RideAlreadyExistException{
+	   
+		dbManager.open();
+		Ride ride = new Ride(from, to, date, nPlaces, price);
+		ride=dbManager.createRide(ride, driverEmail);		
+		dbManager.close();
+		return ride;
+   }
+
+como consecuencia del cambio tambien tendremos que modificar la interfaz BLFacade:
+
+	public Ride createRide( String from, String to, Date date, int nPlaces, float price, String driverEmail) throws RideMustBeLaterThanTodayException, RideAlreadyExistException;
+
+y el método jButtonCreate_actionPerformed de la clase CreateRideGUI:
+
+	Ride r=facade.createRide(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price, driver.getEmail());
+	jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"));
+
+Código refactorizado:
+
+
