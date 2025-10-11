@@ -1,6 +1,6 @@
 package gui.Passenger;
 
-import java.awt.EventQueue;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -14,7 +14,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,14 +21,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import businessLogic.BLFacade;
-import domain.Driver;
-import domain.Mail;
+
 import domain.Passenger;
-import domain.Reservation;
 import domain.Ride;
 import gui.MainGUI;
 
-import javax.swing.JList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;

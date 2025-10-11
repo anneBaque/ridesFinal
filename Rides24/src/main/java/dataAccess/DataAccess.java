@@ -1,14 +1,10 @@
 package dataAccess;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.NoRouteToHostException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,7 +26,6 @@ import domain.Mail;
 import domain.Passenger;
 import domain.Rating;
 import domain.Ride;
-import domain.Transaction;
 import exceptions.RideAlreadyExistException;
 import exceptions.RideMustBeLaterThanTodayException;
 import domain.Reservation;
@@ -48,17 +43,7 @@ public class DataAccess  {
 
      public DataAccess()  {
 		if (c.isDatabaseInitialized()) {
-			String fileName=c.getDbFilename();
-			try {
-				Files.delete(Paths.get(fileName));
-				System.out.println("File deleted");
-			}catch(NoSuchFileException e) {
-				System.out.println("No existe: "+ e.getMessage());
-			}catch(DirectoryNotEmptyException e) {
-				System.out.println("Directorio no vacío: "+ e.getMessage());
-			}catch (IOException e) {
-				System.out.println("Error al borrar: "+ e.getMessage());
-			}
+			borrarBD();
 		}
 		open();
 		if  (c.isDatabaseInitialized())initializeDB();
@@ -69,6 +54,20 @@ public class DataAccess  {
 
 	}
      
+    public void borrarBD() {
+    	String fileName=c.getDbFilename();
+		try {
+			Files.delete(Paths.get(fileName));
+			System.out.println("File deleted");
+		}catch(NoSuchFileException e) {
+			System.out.println("No existe: "+ e.getMessage());
+		}catch(DirectoryNotEmptyException e) {
+			System.out.println("Directorio no vacío: "+ e.getMessage());
+		}catch (IOException e) {
+			System.out.println("Error al borrar: "+ e.getMessage());
+		}
+    	
+    }
     public DataAccess(EntityManager db) {
     	this.db=db;
     }
