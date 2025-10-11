@@ -216,3 +216,31 @@ lineas y de distintas tareas. Era dificil de leer y mantener. La refactorizació
 responsabilidades y sacarlas fuera del método, creando un método exclusivo para cada responsabilidad. 
 (configuración de idioma, limpieza de imagen antigua de BD, inicializacion de la logica de negocio...) 
 Ahora main solo orquesta el flujo.
+
+
+Exceso de parámetros - Mikel León Ramos
+
+Código inicial:
+en la clase Rides24/src/main/java/gui/Driver/CreateRideGUI.java el método createRide
+
+public Ride createRide(String from, String to, Date date, int nPlaces, float price, String driverEmail ) throws RideMustBeLaterThanTodayException, RideAlreadyExistException{
+	   
+		dbManager.open();
+		Ride ride = new Ride(from, to, date, nPlaces, price);
+		ride=dbManager.createRide(ride, driverEmail);		
+		dbManager.close();
+		return ride;
+   }
+
+como consecuencia del cambio tambien tendremos que modificar la interfaz BLFacade:
+
+	public Ride createRide( String from, String to, Date date, int nPlaces, float price, String driverEmail) throws RideMustBeLaterThanTodayException, RideAlreadyExistException;
+
+y el método jButtonCreate_actionPerformed de la clase CreateRideGUI:
+
+	Ride r=facade.createRide(fieldOrigin.getText(), fieldDestination.getText(), UtilDate.trim(jCalendar.getDate()), inputSeats, price, driver.getEmail());
+	jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateRideGUI.RideCreated"));
+
+Código refactorizado:
+
+
