@@ -18,8 +18,8 @@ try {
 '
 ##Codigo refactorizado:
 
-executeCommand("start")
-executeCommand("stop")
+executeCommand("start");
+executeCommand("stop");
 
 public void executeCommand(String action) {
   try {

@@ -73,16 +73,10 @@ public class ObjectdbManagerServer extends JDialog {
 						textArea.append("\n\n\nClosing the database... ");
 					    try {
 					    	System.out.println("Server close");
-					    	 try {
-					    		    
-					    		    
-							    	Runtime.getRuntime().exec("java -cp "+objectDbpath+" com.objectdb.Server -port "+ c.getDatabasePort()+" stop");
-							    	
-							    } catch (Exception ioe) {
-							    	System.out.println (ioe);
-							    }
 
-								System.exit(1);
+					    	executeCommand("stop");
+
+							System.exit(1);
 							
 						} catch (Exception e1) {
 						}
@@ -110,11 +104,7 @@ public class ObjectdbManagerServer extends JDialog {
 			System.out.println("Lauching objectdb server");
 
 			
-			try {
-		    	Runtime.getRuntime().exec("java -cp "+objectDbpath+" com.objectdb.Server -port "+ c.getDatabasePort()+" start");
-		    } catch (Exception ioe) {
-		    	System.out.println (ioe);
-		    }
+			executeCommand("start");
 
 		    textArea.append("\nAccess granted to: "+c.getUser());
 		    
@@ -127,6 +117,14 @@ public class ObjectdbManagerServer extends JDialog {
 		
 		}
 	}
+	
+	public void executeCommand(String action) {
+		  try {
+		    Runtime.getRuntime().exec("java -cp "+objectDbpath+" com.objectdb.Server -port "+ c.getDatabasePort()+" " + action);
+			} catch (Exception ioe) {
+				  System.out.println (ioe);
+			  }
+		}
 
 }
 	
