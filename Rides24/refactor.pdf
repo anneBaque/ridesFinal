@@ -1,7 +1,7 @@
-Duplicate code 1:
+Duplicate code - Mikel León Ramos:
 
-Codigo inicial
- en src/main/java/dataAccess/ObjectdbManagerServer.java metodo ObjectdbManagerServer:
+Código inicial
+ en src/main/java/dataAccess/ObjectdbManagerServer.java método constructor ObjectdbManagerServer:
  //line 76
 try {
   Runtime.getRuntime().exec("java -cp "+objectDbpath+" com.objectdb.Server -port "+ c.getDatabasePort()+" stop");
@@ -16,7 +16,7 @@ try {
       System.out.println (ioe);
 	}
 '
-Codigo refactorizado:
+Código refactorizado:
 
 executeCommand("start");
 executeCommand("stop");
@@ -34,3 +34,104 @@ El bad smell detectado es el código duplicado. En el método ObjectdbManagerSer
 de codigo para ejecutar el mismo comando que únicamente cambia en la accion (start/stop). En la refactorización se ha creado
 un método adicional executeCommand al que se le pasa por parámetro la acción en forma de string. En el método original se ha
 sustituido las lineas de codigo repetido por la llamada al nuevo método.
+
+
+Long method smell - Mikel León Ramos
+
+Código inicial:
+en Rides24/src/main/java/gui/ApplicationLauncher.java método main
+
+public static void main(String[] args) {
+
+		ConfigXML c=ConfigXML.getInstance();
+	
+		System.out.println(c.getLocale());
+		
+		Locale.setDefault(new Locale(c.getLocale()));
+		
+		System.out.println("Locale: "+Locale.getDefault());
+		
+	    Driver driver=new Driver("driver3@gmail.com","Test Driver");
+
+		
+		MainGUI a=new MainGUI(driver);
+		a.setVisible(true);
+		if(c.isDatabaseInitialized()) {
+			 Path carpeta = Paths.get("imagenes");
+			 //Eliminamos las imagenes de la base de datos antigua
+		        if (Files.exists(carpeta) && Files.isDirectory(carpeta)) {
+					try (DirectoryStream<Path> archivos = Files.newDirectoryStream(carpeta)) { //iterar sobre el directorio
+						for (Path archivo : archivos) {
+							try{
+								Files.delete(archivo);
+							} catch (IOException e) {
+								System.err.println("Error al borrar el archivo: " + archivo + " -> " + e.getMessage());
+                			}
+						}
+					} catch (IOException e) {
+            			System.err.println("Error al leer " + carpeta + ": " + e.getMessage());
+        			}
+
+        			try {
+            			Files.delete(carpeta); // Eliminar la carpeta después de vaciarla
+        			} catch (IOException e) {
+            			System.err.println("Error al borrar la carpeta: " + carpeta + " -> " + e.getMessage());
+        			}
+				}	
+		}
+
+		try {
+			
+			BLFacade appFacadeInterface;
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			
+			if (c.isBusinessLogicLocal()) {
+			
+				DataAccess da= new DataAccess();
+				appFacadeInterface=new BLFacadeImplementation(da);
+			
+			}	
+			
+			
+			else { //If remote
+				
+				 String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";
+				 
+				URL url = new URL(serviceName);
+
+		 
+		        //1st argument refers to wsdl document above
+				//2nd argument is service name, refer to wsdl document above
+		        QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
+		 
+		        Service service = Service.create(url, qname);
+
+		         appFacadeInterface = service.getPort(BLFacade.class);
+			} 
+			
+			MainGUI.setBussinessLogic(appFacadeInterface);
+
+		
+
+			
+		}catch (Exception e) {
+			a.jLabelSelectOption.setText("Error: "+e.toString());
+			a.jLabelSelectOption.setForeground(Color.RED);	
+			
+			System.out.println("Error in ApplicationLauncher: "+e.toString());
+		}
+		//a.pack();
+
+
+	}
+
+Código refactorizado:
+
+
+
+Descripción:
+Originalmente el método main tenia demasiadas responsabilidades, lo que hacía que su código tuviese muchas 
+lineas y de distintas tareas. Era dificil de leer y mantener. La refactorización consiste en separar las 
+responsabilidades y sacarlas fuera del método, creando un método exclusivo para cada responsabilidad. 
+(configuración de idioma, limpieza de imagen antigua de BD, inicializacion de la logica de negocio...) 
+Ahora main solo orquesta el flujo.
