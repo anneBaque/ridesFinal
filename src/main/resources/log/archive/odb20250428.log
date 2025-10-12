@@ -1,0 +1,40 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-04-28 15:43:04 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 51400@Anne
+
+[2025-04-28 15:43:04 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-04-28 15:43:04 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-04-28 15:43:04 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-04-28 15:43:04 #5 type] 
+Type domain.Rating is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-04-28 15:43:45 #1 store] 
+Database 'C:\Users\1153342\git\Rides\Rides24\src\main\resources\rides.temp' is opened by 23380@Anne
+
+[2025-04-28 15:43:45 #2 type] 
+Type domain.Driver is not enhanced.
+
+[2025-04-28 15:43:45 #3 type] 
+Type domain.Ride is not enhanced.
+
+[2025-04-28 15:43:45 #4 type] 
+Type domain.Passenger is not enhanced.
+
+[2025-04-28 15:43:45 #5 type] 
+Type domain.Rating is not enhanced.
+
+[2025-04-28 15:44:14 #6 type.registry] 
+New type domain.Reservation
+
+[2025-04-28 15:44:14 #7 type] 
+Type domain.Reservation is not enhanced.
+
