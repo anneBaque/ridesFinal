@@ -41,7 +41,7 @@ public class DataAccess  {
 
 
 	ConfigXML c=ConfigXML.getInstance();
-
+//Prueba
      public DataAccess()  {
 		if (c.isDatabaseInitialized()) {
 			borrarBD();
