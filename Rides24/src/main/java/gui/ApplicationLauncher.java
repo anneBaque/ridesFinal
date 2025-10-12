@@ -49,58 +49,78 @@ public class ApplicationLauncher {
 	}
 	
 	public static void cleanOldDbImages(ConfigXML config) {
-		Path carpeta = Paths.get("imagenes");
-		//Eliminamos las imagenes de la base de datos antigua
-	    if (Files.exists(carpeta) && Files.isDirectory(carpeta)) {
-	    	try (DirectoryStream<Path> archivos = Files.newDirectoryStream(carpeta)) { //iterar sobre el directorio
-	    		for (Path archivo : archivos) {
-					try{
-						Files.delete(archivo);
-					} catch (IOException e) {
-						System.err.println("Error al borrar el archivo: " + archivo + " -> " + e.getMessage());
-           			}
-				}
-			} catch (IOException e) {
-       			System.err.println("Error al leer " + carpeta + ": " + e.getMessage());
-   			}
+	    Path carpeta = Paths.get("imagenes");
 
-   			try {
-       			Files.delete(carpeta); // Eliminar la carpeta después de vaciarla
-   			} catch (IOException e) {
-       			System.err.println("Error al borrar la carpeta: " + carpeta + " -> " + e.getMessage());
-   			}
-		}
+	    if (!Files.exists(carpeta) || !Files.isDirectory(carpeta)) {
+	        return;
+	    }
+
+	    deleteFilesInDirectory(carpeta);
+	    deleteDirectory(carpeta);
+	}
+
+	private static void deleteFilesInDirectory(Path carpeta) {
+	    try (DirectoryStream<Path> archivos = Files.newDirectoryStream(carpeta)) {
+	        for (Path archivo : archivos) {
+	            deleteFile(archivo);
+	        }
+	    } catch (IOException e) {
+	        System.err.println("Error al leer " + carpeta + ": " + e.getMessage());
+	    }
+	}
+
+	private static void deleteFile(Path archivo) {
+	    try {
+	        Files.delete(archivo);
+	    } catch (IOException e) {
+	        System.err.println("Error al borrar el archivo: " + archivo + " -> " + e.getMessage());
+	    }
+	}
+
+	private static void deleteDirectory(Path carpeta) {
+	    try {
+	        Files.delete(carpeta);
+	    } catch (IOException e) {
+	        System.err.println("Error al borrar la carpeta: " + carpeta + " -> " + e.getMessage());
+	    }
 	}
 	
 	public static void initializeBusinessLogic(ConfigXML c, MainGUI a) {
-		try {
-			BLFacade appFacadeInterface;
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-			
-			if (c.isBusinessLogicLocal()) {
-				DataAccess da= new DataAccess();
-				appFacadeInterface=new BLFacadeImplementation(da);
-			}	
-			
-			else { //If remote
-				String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";
-				URL url = new URL(serviceName);
-		 
-		        //1st argument refers to wsdl document above
-				//2nd argument is service name, refer to wsdl document above
-		        QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
-		        Service service = Service.create(url, qname);
-		        appFacadeInterface = service.getPort(BLFacade.class);
-			} 
-	
-			MainGUI.setBussinessLogic(appFacadeInterface);
-
-		}catch (Exception e) {
-			a.jLabelSelectOption.setText("Error: "+e.toString());
-			a.jLabelSelectOption.setForeground(Color.RED);	
-			
-			System.out.println("Error in ApplicationLauncher: "+e.toString());
-		}
+	    try {
+	        setUILookAndFeel();
+	        BLFacade appFacadeInterface = c.isBusinessLogicLocal()
+	                ? createLocalBusinessLogic()
+	                : createRemoteBusinessLogic(c);
+	        MainGUI.setBussinessLogic(appFacadeInterface);
+	    } catch (Exception e) {
+	        handleInitializationError(a, e);
+	    }
 	}
+
+	private static void setUILookAndFeel() throws Exception {
+	    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+	}
+
+	private static BLFacade createLocalBusinessLogic() {
+	    DataAccess da = new DataAccess();
+	    return new BLFacadeImplementation(da);
+	}
+
+	private static BLFacade createRemoteBusinessLogic(ConfigXML c) throws Exception {
+	    String serviceName = "http://" + c.getBusinessLogicNode() + ":" +
+	                         c.getBusinessLogicPort() + "/ws/" +
+	                         c.getBusinessLogicName() + "?wsdl";
+	    URL url = new URL(serviceName);
+	    QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
+	    Service service = Service.create(url, qname);
+	    return service.getPort(BLFacade.class);
+	}
+
+	private static void handleInitializationError(MainGUI a, Exception e) {
+	    a.jLabelSelectOption.setText("Error: " + e.toString());
+	    a.jLabelSelectOption.setForeground(Color.RED);
+	    System.err.println("Error in ApplicationLauncher: " + e.toString());
+	}
+
 
 }

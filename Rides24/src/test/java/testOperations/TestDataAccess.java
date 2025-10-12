@@ -96,7 +96,7 @@ public class TestDataAccess {
 					 driver = db.find(Driver.class, email);
 					if (driver==null)
 						driver=new Driver(name,email);
-				    driver.addRide(from, to, date, nPlaces, price);
+				    driver.addRide(from + "-" + to, date, nPlaces, price);
 					db.getTransaction().commit();
 					return driver;
 					

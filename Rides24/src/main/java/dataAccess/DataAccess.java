@@ -37,6 +37,7 @@ public class DataAccess  {
 	private  EntityManager  db;
 	private  EntityManagerFactory emf;
 	private String queryreservaEmail = "SELECT r FROM Reservation r WHERE r.pasEmail=?1";
+	private String queryReservaEmailRide = "SELECT r FROM Reservation r WHERE r.pasEmail=?1 AND r.idRide=?2";
 
 
 	ConfigXML c=ConfigXML.getInstance();
@@ -99,10 +100,10 @@ public class DataAccess  {
 
 			
 			//Create rides
-			driver1.addRide(ridesDonostia, "Bilbo", UtilDate.newDate(year,month,15), 4, 7);
-			driver1.addRide(ridesDonostia, "Gazteiz", UtilDate.newDate(year,month,6), 4, 8);
-			driver1.addRide("Bilbo", ridesDonostia, UtilDate.newDate(year,month,25), 4, 4);
-			driver1.addRide(ridesDonostia, "Iruña", UtilDate.newDate(year,month,7), 4, 8);
+			driver1.addRide(ridesDonostia + "-Bilbo", UtilDate.newDate(year,month,15), 4, 7);
+			driver1.addRide(ridesDonostia + "-Gazteiz", UtilDate.newDate(year,month,6), 4, 8);
+			driver1.addRide("Bilbo-" + ridesDonostia, UtilDate.newDate(year,month,25), 4, 4);
+			driver1.addRide(ridesDonostia + "-Iruña", UtilDate.newDate(year,month,7), 4, 8);
 			
 
 			
@@ -167,7 +168,7 @@ public class DataAccess  {
 				db.getTransaction().commit();
 				throw new RideAlreadyExistException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.RideAlreadyExist"));
 			}
-			Ride ride = driver.addRide(r.getFrom(), r.getTo(), r.getDate(),(int) r.getnPlaces(), r.getPrice());
+			Ride ride = driver.addRide(r.getFrom() + "-" + r.getTo(), r.getDate(),(int) r.getnPlaces(), r.getPrice());
 			//next instruction can be obviated
 			db.persist(driver); 
 			db.getTransaction().commit();
@@ -421,7 +422,7 @@ public void open(){
 	public boolean eraseReservation(String email, Ride ride) {
 		boolean res=false;
 		db.getTransaction().begin();
-		TypedQuery<Reservation> query = db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1 AND r.idRide=?2 ",Reservation.class);   
+		TypedQuery<Reservation> query = db.createQuery(queryReservaEmailRide, Reservation.class);   
 		query.setParameter(1, email);
 		query.setParameter(2, ride.getRideNumber());
 		Reservation auxiliar = query.getSingleResult();
@@ -459,7 +460,7 @@ public void open(){
 	
 	public boolean existsReservation(Reservation res) {
 		boolean existe = true;
-		TypedQuery<Reservation> query = db.createQuery("SELECT r FROM Reservation r WHERE r.pasEmail=?1 AND r.idRide=?2",Reservation.class);   
+		TypedQuery<Reservation> query = db.createQuery(queryReservaEmailRide, Reservation.class);   
 		query.setParameter(1, res.getPasEmail());
 		query.setParameter(2, res.getIdRide());
 		List<Reservation> lista = query.getResultList();

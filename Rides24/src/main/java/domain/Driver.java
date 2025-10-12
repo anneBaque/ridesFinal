@@ -88,8 +88,13 @@ public class Driver implements Serializable {
 	 * @param betMinimum of that question
 	 * @return Bet
 	 */
-	public Ride addRide(String from, String to, Date date, int nPlaces, float price)  {
-        Ride ride=new Ride(from,to,date,nPlaces,price, this);
+	public Ride addRide(String route, Date date, int nPlaces, float price)  {
+		// Dividir route en from y to
+	    String[] parts = route.split("-");
+	    String from = parts[0];
+	    String to = parts[1];
+		
+		Ride ride=new Ride(from,to,date,nPlaces,price, this);
         rides.add(ride);
         return ride;
 	}

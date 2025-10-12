@@ -94,7 +94,7 @@ public class CreateRideMockTest {
 		try {
 					
 			 driver=new Driver(driverEmail,driverName);
-			 driver.addRide(rideFrom, rideTo, rideDate, 0, 0);
+			 driver.addRide(rideFrom + "-" + rideTo, rideDate, 0, 0);
 			//configure the state through mocks 
 	        Mockito.when(db.find(Driver.class, driver.getEmail())).thenReturn(driver);
 		
