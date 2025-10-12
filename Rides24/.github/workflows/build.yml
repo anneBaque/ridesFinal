@@ -1,40 +1,36 @@
 name: SonarCloud
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master
   pull_request:
-    branches: [ main ]
-
+    types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: Build, Test, and Analyze
+    name: Build and analyze
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Clonar el repositorio
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # necesario para un análisis correcto de SonarCloud
-
-      # 2️⃣ Configurar Java (usa la versión que tengas en tu proyecto)
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
-      # 3️⃣ Compilar, ejecutar tests y generar reporte JaCoCo
-      - name: Build with Maven and run tests
-        run: mvn -B clean verify org.jacoco:jacoco-maven-plugin:report
-
-      # 4️⃣ Análisis de SonarCloud con cobertura
-      - name: SonarCloud Analysis
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar \
-              -Dsonar.projectKey=is2-baquedano_rides \
-              -Dsonar.organization=is2-baquedano \
-              -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        run: mvn sonar:sonar -Dsonar.projectKey=is2-baquedano_rides -Dsonar.organization=is2-baquedano
