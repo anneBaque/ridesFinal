@@ -69,6 +69,7 @@ public class DataAccess  {
 		}
     	
     }
+    // DataAccess method
     public DataAccess(EntityManager db) {
     	this.db=db;
     }
