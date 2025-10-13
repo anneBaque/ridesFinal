@@ -49,7 +49,6 @@ public class RejectedReservationBDBlackTest {
 	    String pasEmail = "b@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
-	    String[] args = {"Bilbao", "Praga", driEmail};
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");
@@ -111,7 +110,6 @@ public class RejectedReservationBDBlackTest {
 	    String pasEmail = "c@gmail.com";
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	    Reservation res = null;
-	    String[] args = {"Bilbao", "Praga", driEmail};
 	    
 	    try {
 	        rideDate = sdf.parse("14/12/2025");

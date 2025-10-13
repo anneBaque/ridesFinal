@@ -17,7 +17,6 @@ import javax.persistence.Persistence;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
@@ -124,7 +123,6 @@ public class CreateRideMockTest {
 
 		String rideFrom="Donostia";
 		String rideTo="Zarautz";
-		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
@@ -182,7 +180,6 @@ public class CreateRideMockTest {
 				String rideTo="Zarautz";
 				
 				String driverEmail=null;
-				String[] args = {rideFrom, rideTo, driverEmail};
 
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -235,7 +232,6 @@ public class CreateRideMockTest {
 		String driverEmail="driver1@gmail.com";
 		String rideFrom=null;
 		String rideTo="Zarautz";
-		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;

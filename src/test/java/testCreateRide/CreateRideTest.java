@@ -38,7 +38,6 @@ public class CreateRideTest {
 
 		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
-		String[] args = {rideFrom, rideTo, driverEmail};
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
@@ -94,7 +93,6 @@ public class CreateRideTest {
 
 		String rideFrom=RIDE_FROM_DONOSTIA;
 		String rideTo="Zarautz";
-		String[] args = {rideFrom, rideTo, driverEmail};
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
 		try {
@@ -165,7 +163,6 @@ public class CreateRideTest {
 				String rideFrom=RIDE_FROM_DONOSTIA;
 				String rideTo="Zarautz";
 				String driverEmail=null;
-				String[] args = {rideFrom, rideTo, driverEmail};
 
 
 				
@@ -214,7 +211,6 @@ public class CreateRideTest {
 		String driverEmail="driver1@gmail.com";
 		String rideFrom=null;
 		String rideTo="Zarautz";
-		String[] args = {rideFrom, rideTo, driverEmail};
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date rideDate=null;;
