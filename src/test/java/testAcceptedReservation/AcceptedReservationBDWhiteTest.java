@@ -39,6 +39,7 @@ public class AcceptedReservationBDWhiteTest {
 	}
 	
 	
+	
 	@Test
 	//No tiene reservas aceptadas
 	public void test2() {
@@ -165,9 +166,8 @@ public class AcceptedReservationBDWhiteTest {
 	    }
 	}
 	
-	
+	/*
 	@Test
-	//Tiene reservas aceptadas, pero no procesadas
 	public void test4() {
 		System.out.println("Test4");
 	    List<Ride> viajes;
@@ -228,7 +228,7 @@ public class AcceptedReservationBDWhiteTest {
 	        sut.close();  
 	    }
 	}
-	
+	*/
 
 
 

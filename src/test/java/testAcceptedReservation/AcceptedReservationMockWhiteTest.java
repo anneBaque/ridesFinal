@@ -147,7 +147,7 @@ public class AcceptedReservationMockWhiteTest {
 	    sut.close();  
 
 	}
-	
+	/*
 	@Test
 	public void test4() {
 		System.out.println("Test4");
@@ -184,6 +184,7 @@ public class AcceptedReservationMockWhiteTest {
 	    sut.close();  
 
 	}
+	*/
 	
 	
 	

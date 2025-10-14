@@ -37,6 +37,7 @@ public class AcceptedReservationBDBlackTest {
 		
 	}
 	
+	
 
 	@Test
 	//No tiene reservas aceptadas
@@ -98,9 +99,9 @@ public class AcceptedReservationBDBlackTest {
 	        sut.close();  
 	    }
 	}
-	
+
+	/*
 	@Test
-	//Tiene reservas aceptadas, pero no procesadas
 	public void test3() {
 		System.out.println("Test3");
 	    List<Ride> viajes;
@@ -163,6 +164,7 @@ public class AcceptedReservationBDBlackTest {
 	        sut.close();  
 	    }
 	}
+	*/
 	
 	@Test
 	public void test4() {

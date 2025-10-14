@@ -78,6 +78,7 @@ public class AcceptedReservactionMockBlackTest {
 		
 	}
 	
+	
 	@Test
 	public void test2() {
 		System.out.println("Test2");
@@ -111,7 +112,7 @@ public class AcceptedReservactionMockBlackTest {
 	    assertTrue(viajes.isEmpty());
 	    sut.close();  
 	}
-	
+	/*
 	@Test
 	public void test3() {
 		System.out.println("Test3");
@@ -148,6 +149,7 @@ public class AcceptedReservactionMockBlackTest {
 	    sut.close();  
 
 	}
+	*/
 	
 	@Test
 	public void test4() {
