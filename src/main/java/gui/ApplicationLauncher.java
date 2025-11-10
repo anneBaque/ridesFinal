@@ -19,6 +19,7 @@ import dataAccess.DataAccess;
 import domain.Driver;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
+import businessLogic.BLFactory;
 
 public class ApplicationLauncher { 
 	
@@ -30,15 +31,25 @@ public class ApplicationLauncher {
 		
 		setUpLocale(c);
 
+		/*
 	    if(c.isDatabaseInitialized()) {
 			cleanOldDbImages(c);
-		}
+		}*/
 	    
+		try {
+			setUILookAndFeel();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		boolean isLocal = c.isBusinessLogicLocal();
+		BLFacade appFacadeInterface = new BLFactory().getBusinessLogicFactory(isLocal);
+		MainGUI.setBussinessLogic(appFacadeInterface);
+		
 	    Driver driver=new Driver("driver3@gmail.com","Test Driver");
 		MainGUI a=new MainGUI(driver);
 		a.setVisible(true);
 		
-		initializeBusinessLogic(c, a);
+		//initializeBusinessLogic(c, a);
 
 	}
 	
