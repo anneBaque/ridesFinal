@@ -8,7 +8,7 @@ public class ExtendedIteratorCities implements ExtendedIterator<String> {
 	
 	public ExtendedIteratorCities(List<String> l) {
 		this.cities = l;
-		i = 0;
+		i = -1;
 	}
 	
 	@Override
