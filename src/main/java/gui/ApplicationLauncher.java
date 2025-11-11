@@ -31,6 +31,10 @@ public class ApplicationLauncher {
 		
 		setUpLocale(c);
 
+		Driver driver=new Driver("driver3@gmail.com","Test Driver");
+		MainGUI a=new MainGUI(driver);
+		a.setVisible(true);
+		
 		/*
 	    if(c.isDatabaseInitialized()) {
 			cleanOldDbImages(c);
@@ -38,16 +42,13 @@ public class ApplicationLauncher {
 	    
 		try {
 			setUILookAndFeel();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		boolean isLocal = c.isBusinessLogicLocal();
-		BLFacade appFacadeInterface = new BLFactory().getBusinessLogicFactory(isLocal);
-		MainGUI.setBussinessLogic(appFacadeInterface);
+			boolean isLocal = c.isBusinessLogicLocal();
+			BLFacade appFacadeInterface = new BLFactory().getBusinessLogicFactory(isLocal);
+			MainGUI.setBussinessLogic(appFacadeInterface);
 		
-	    Driver driver=new Driver("driver3@gmail.com","Test Driver");
-		MainGUI a=new MainGUI(driver);
-		a.setVisible(true);
+		} catch (Exception e) {
+			handleInitializationError(a, e);
+		}
 		
 		//initializeBusinessLogic(c, a);
 
