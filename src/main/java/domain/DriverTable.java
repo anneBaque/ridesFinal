@@ -1,10 +1,13 @@
 package domain;
 
 import java.awt.BorderLayout;
+import java.awt.Component;//
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;//
+import javax.swing.table.TableColumn;//
 import javax.swing.JScrollPane;
 
 
@@ -23,5 +26,6 @@ public class DriverTable extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(tabla);
 		//Agregamos el	JScrollPane	al contenedor
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 	}
 }

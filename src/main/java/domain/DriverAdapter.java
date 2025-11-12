@@ -24,6 +24,11 @@ public class DriverAdapter extends AbstractTableModel {
 	public int getColumnCount() {
 		return columnNames.length;
 	}
+	
+	@Override
+	public String getColumnName(int columnIndex) {
+	    return columnNames[columnIndex];  // Return column header
+	 }
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -37,5 +42,4 @@ public class DriverAdapter extends AbstractTableModel {
             default: return null;
         }
 	}
-
 }
