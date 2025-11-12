@@ -114,4 +114,5 @@ public interface BLFacade  {
 	 public void anadirDinero(Driver conductor, float dineros);
 	 public void withdraw(Driver conductor, float dineros);
 	 public void pay(Passenger pasajero, float dineros);
+	 public ExtendedIterator<String> getDepartingCitiesIterator();
 }

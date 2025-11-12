@@ -319,5 +319,11 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.pay(pasajero, dineros);
     	dbManager.close();
     }
+    
+    public ExtendedIterator<String> getDepartingCitiesIterator(){
+    	List<String> lista = this.getDepartCities();
+    	return new ExtendedIteratorCities(lista);
+    	
+    }
 }
 

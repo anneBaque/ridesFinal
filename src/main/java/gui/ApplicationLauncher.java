@@ -19,10 +19,9 @@ import dataAccess.DataAccess;
 import domain.Driver;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
+import businessLogic.BLFactory;
 
 public class ApplicationLauncher { 
-	
-	
 	
 	public static void main(String[] args) {
 
@@ -30,16 +29,20 @@ public class ApplicationLauncher {
 		
 		setUpLocale(c);
 
-	    if(c.isDatabaseInitialized()) {
-			cleanOldDbImages(c);
-		}
-	    
-	    Driver driver=new Driver("driver3@gmail.com","Test Driver");
+		Driver driver=new Driver("driver3@gmail.com","Test Driver");
 		MainGUI a=new MainGUI(driver);
 		a.setVisible(true);
 		
-		initializeBusinessLogic(c, a);
-
+		try {
+			setUILookAndFeel();
+			boolean isLocal = c.isBusinessLogicLocal();
+			BLFacade appFacadeInterface = new BLFactory().getBusinessLogicFactory(isLocal);
+			MainGUI.setBussinessLogic(appFacadeInterface);
+		
+		} catch (Exception e) {
+			handleInitializationError(a, e);
+		}
+		
 	}
 	
 	public static void setUpLocale(ConfigXML config) {
@@ -47,7 +50,7 @@ public class ApplicationLauncher {
 		Locale.setDefault(new Locale(config.getLocale()));
 		System.out.println("Locale: "+Locale.getDefault());
 	}
-	
+	/*
 	public static void cleanOldDbImages(ConfigXML config) {
 	    Path carpeta = Paths.get("imagenes");
 
@@ -95,12 +98,12 @@ public class ApplicationLauncher {
 	    } catch (Exception e) {
 	        handleInitializationError(a, e);
 	    }
-	}
+	}*/
 
 	private static void setUILookAndFeel() throws Exception {
 	    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 	}
-
+/*
 	private static BLFacade createLocalBusinessLogic() {
 	    DataAccess da = new DataAccess();
 	    return new BLFacadeImplementation(da);
@@ -115,7 +118,7 @@ public class ApplicationLauncher {
 	    Service service = Service.create(url, qname);
 	    return service.getPort(BLFacade.class);
 	}
-
+*/
 	private static void handleInitializationError(MainGUI a, Exception e) {
 	    a.jLabelSelectOption.setText("Error: " + e.toString());
 	    a.jLabelSelectOption.setForeground(Color.RED);
